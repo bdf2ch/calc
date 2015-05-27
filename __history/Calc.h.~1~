@@ -1,0 +1,21 @@
+//---------------------------------------------------------------------------
+
+#ifndef CalcH
+#define CalcH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+//---------------------------------------------------------------------------
+class TCalcForm : public TForm
+{
+__published:	// IDE-managed Components
+private:	// User declarations
+public:		// User declarations
+	__fastcall TCalcForm(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TCalcForm *CalcForm;
+//---------------------------------------------------------------------------
+#endif

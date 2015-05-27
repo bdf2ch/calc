@@ -1,0 +1,189 @@
+object CalcForm: TCalcForm
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Calc'
+  ClientHeight = 223
+  ClientWidth = 312
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object display: TEdit
+    Left = 8
+    Top = 8
+    Width = 297
+    Height = 21
+    TabOrder = 0
+  end
+  object Button_1: TButton
+    Left = 8
+    Top = 43
+    Width = 49
+    Height = 40
+    Caption = '1'
+    TabOrder = 1
+    Visible = False
+    OnClick = Button_1Click
+  end
+  object Button_2: TButton
+    Left = 63
+    Top = 43
+    Width = 50
+    Height = 40
+    Cancel = True
+    Caption = '2'
+    TabOrder = 2
+    Visible = False
+    OnClick = Button_2Click
+  end
+  object Button_3: TButton
+    Left = 119
+    Top = 43
+    Width = 50
+    Height = 40
+    Caption = '3'
+    TabOrder = 3
+    Visible = False
+    OnClick = Button_3Click
+  end
+  object Button_plus: TButton
+    Left = 200
+    Top = 43
+    Width = 49
+    Height = 40
+    Caption = '+'
+    TabOrder = 4
+  end
+  object Button_minus: TButton
+    Left = 255
+    Top = 43
+    Width = 50
+    Height = 40
+    Caption = '-'
+    TabOrder = 5
+  end
+  object Button_4: TButton
+    Left = 8
+    Top = 87
+    Width = 49
+    Height = 40
+    Caption = '4'
+    TabOrder = 6
+    Visible = False
+    OnClick = Button_4Click
+  end
+  object Button_5: TButton
+    Left = 63
+    Top = 87
+    Width = 50
+    Height = 40
+    Caption = '5'
+    TabOrder = 7
+    Visible = False
+    OnClick = Button_5Click
+  end
+  object Button_6: TButton
+    Left = 119
+    Top = 87
+    Width = 50
+    Height = 40
+    Caption = '6'
+    TabOrder = 8
+    Visible = False
+    OnClick = Button_6Click
+  end
+  object Button_7: TButton
+    Left = 8
+    Top = 133
+    Width = 49
+    Height = 40
+    Caption = '7'
+    TabOrder = 9
+    Visible = False
+    OnClick = Button_7Click
+  end
+  object Button_8: TButton
+    Left = 63
+    Top = 131
+    Width = 50
+    Height = 40
+    Caption = '8'
+    TabOrder = 10
+    Visible = False
+    OnClick = Button_8Click
+  end
+  object Button_9: TButton
+    Left = 119
+    Top = 133
+    Width = 50
+    Height = 40
+    Caption = '9'
+    TabOrder = 11
+    Visible = False
+    OnClick = Button_9Click
+  end
+  object Button_0: TButton
+    Left = 8
+    Top = 177
+    Width = 49
+    Height = 40
+    Caption = '0'
+    TabOrder = 12
+    Visible = False
+    OnClick = Button_0Click
+  end
+  object Button_multiply: TButton
+    Left = 200
+    Top = 87
+    Width = 49
+    Height = 40
+    Caption = '*'
+    TabOrder = 13
+  end
+  object Button_divide: TButton
+    Left = 255
+    Top = 87
+    Width = 49
+    Height = 40
+    Caption = '/'
+    TabOrder = 14
+  end
+  object Button_equals: TButton
+    Left = 200
+    Top = 133
+    Width = 49
+    Height = 40
+    Caption = '='
+    TabOrder = 15
+  end
+  object Button_mod: TButton
+    Left = 255
+    Top = 133
+    Width = 49
+    Height = 40
+    Caption = '%'
+    TabOrder = 16
+  end
+  object ComboBox1: TComboBox
+    Left = 200
+    Top = 179
+    Width = 104
+    Height = 21
+    TabOrder = 17
+    Text = 'ComboBox1'
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 250
+    OnTimer = Timer1Timer
+    Left = 72
+    Top = 176
+  end
+end
