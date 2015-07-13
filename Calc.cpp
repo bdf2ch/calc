@@ -10,7 +10,8 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TCalcForm *CalcForm;
-std::vector<TButton*> buttons;
+std::vector<TShape*> buttons;
+std::vector<TLabel*> labels;
 
 //---------------------------------------------------------------------------
 __fastcall TCalcForm::TCalcForm(TComponent* Owner)
@@ -21,16 +22,34 @@ __fastcall TCalcForm::TCalcForm(TComponent* Owner)
 /* обработка события показа формы */
 void __fastcall TCalcForm::FormShow(TObject *Sender)
 {
-	buttons.insert(buttons.end(), CalcForm -> Button_0);
-	buttons.insert(buttons.end(), CalcForm -> Button_1);
-	buttons.insert(buttons.end(), CalcForm -> Button_2);
-	buttons.insert(buttons.end(), CalcForm -> Button_3);
-	buttons.insert(buttons.end(), CalcForm -> Button_4);
-	buttons.insert(buttons.end(), CalcForm -> Button_5);
-	buttons.insert(buttons.end(), CalcForm -> Button_6);
-	buttons.insert(buttons.end(), CalcForm -> Button_7);
-	buttons.insert(buttons.end(), CalcForm -> Button_8);
-	buttons.insert(buttons.end(), CalcForm -> Button_9);
+	buttons.insert(buttons.end(), CalcForm -> btn0);
+	buttons.insert(buttons.end(), CalcForm -> btn1);
+	buttons.insert(buttons.end(), CalcForm -> btn2);
+	buttons.insert(buttons.end(), CalcForm -> btn3);
+	buttons.insert(buttons.end(), CalcForm -> btn4);
+	buttons.insert(buttons.end(), CalcForm -> btn5);
+	buttons.insert(buttons.end(), CalcForm -> btn6);
+	buttons.insert(buttons.end(), CalcForm -> btn7);
+	buttons.insert(buttons.end(), CalcForm -> btn8);
+	buttons.insert(buttons.end(), CalcForm -> btn9);
+
+	labels.insert(labels.end(), CalcForm -> btn0_label);
+	labels.insert(labels.end(), CalcForm -> btn1_label);
+	labels.insert(labels.end(), CalcForm -> btn2_label);
+	labels.insert(labels.end(), CalcForm -> btn3_label);
+	labels.insert(labels.end(), CalcForm -> btn4_label);
+	labels.insert(labels.end(), CalcForm -> btn5_label);
+	labels.insert(labels.end(), CalcForm -> btn6_label);
+	labels.insert(labels.end(), CalcForm -> btn7_label);
+	labels.insert(labels.end(), CalcForm -> btn8_label);
+	labels.insert(labels.end(), CalcForm -> btn9_label);
+
+	for (int i = 0; i < buttons.size(); i++) {
+		buttons[i] -> Brush -> Color = clBlack;
+		buttons[i] -> Cursor = crHandPoint;
+		labels[i] -> Font -> Color = clWhite;
+		labels[i] -> Cursor = crHandPoint;
+	}
 
 	Timer1 -> Enabled = true;
 }
@@ -42,6 +61,7 @@ void __fastcall TCalcForm::Timer1Timer(TObject *Sender)
 
 	if (buttons[x] -> Visible == false) {
 		buttons[x] -> Visible = true;
+		labels[x] -> Visible = true;
 		counter++;
 
 		if (counter == 10) {
@@ -51,63 +71,111 @@ void __fastcall TCalcForm::Timer1Timer(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalcForm::Button_1Click(TObject *Sender)
+/* Обработчик изменения темы оформления */
+void __fastcall TCalcForm::ThemeSelectorChange(TObject *Sender)
 {
-	CalcForm -> display -> Text = "1";
+	TColor *bg_color = new TColor;
+	TColor *font_color = new TColor;
+
+	switch (CalcForm -> ThemeSelector -> ItemIndex) {
+		case 0:
+			bg_color = (TColor*)clBlack;
+			font_color = (TColor*)clWhite;
+			break;
+		case 1:
+			bg_color = (TColor*)clBlue;
+			font_color = (TColor*)clWhite;
+			break;
+		case 2:
+			bg_color = (TColor*)clYellow;
+			font_color = (TColor*)clBlue;
+			break;
+		case 3:
+			bg_color = (TColor*)RGB(247, 174, 74);
+			font_color = (TColor*)clBlack;
+			break;
+		case 4:
+			bg_color = (TColor*)RGB(216, 140, 230);
+			font_color = (TColor*)clWhite;
+			break;
+	}
+
+	for (int i = 0; i < buttons.size(); i++) {
+		buttons[i] -> Brush -> Color = (TColor)bg_color;
+		labels[i] -> Font -> Color = (TColor)font_color;
+	}
+
+	//CalcForm->Button_1->co
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalcForm::Button_2Click(TObject *Sender)
+void __fastcall TCalcForm::btn1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+		  int X, int Y)
 {
-	CalcForm -> display -> Text = "2";
+	CalcForm -> display -> Text = "1";	
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalcForm::Button_3Click(TObject *Sender)
+void __fastcall TCalcForm::btn2MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
 {
-	CalcForm -> display -> Text = "3";
+	CalcForm -> display -> Text = "2";		
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalcForm::Button_4Click(TObject *Sender)
+void __fastcall TCalcForm::btn3MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
 {
-	CalcForm -> display -> Text = "4";
+	CalcForm -> display -> Text = "3";		
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalcForm::Button_5Click(TObject *Sender)
+void __fastcall TCalcForm::btn4MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
 {
-	CalcForm -> display -> Text = "5";
+	CalcForm -> display -> Text = "4";		
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalcForm::Button_6Click(TObject *Sender)
+void __fastcall TCalcForm::btn5MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
 {
-	CalcForm -> display -> Text = "6";
+	CalcForm -> display -> Text = "5";		
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalcForm::Button_7Click(TObject *Sender)
+void __fastcall TCalcForm::btn6MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
 {
-	CalcForm -> display -> Text = "7";
+	CalcForm -> display -> Text = "6";		
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalcForm::Button_8Click(TObject *Sender)
+void __fastcall TCalcForm::btn7MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
 {
-	CalcForm -> display -> Text = "8";
+	CalcForm -> display -> Text = "7";		
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalcForm::Button_9Click(TObject *Sender)
+void __fastcall TCalcForm::btn8MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
 {
-	CalcForm -> display -> Text = "9";
+	CalcForm -> display -> Text = "8";		
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalcForm::Button_0Click(TObject *Sender)
+void __fastcall TCalcForm::btn9MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
 {
-	CalcForm -> display -> Text = "0";
+	CalcForm -> display -> Text = "9";		
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TCalcForm::btn0MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
+{
+	CalcForm -> display -> Text = "0";		
 }
 //---------------------------------------------------------------------------
 
